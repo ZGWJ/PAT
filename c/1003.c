@@ -8,7 +8,7 @@ int main(){
     int i,j;
     scanf("%d",&n);
     for (j=0; j<n;j++) {
-        char str[100]={NULL};
+        char str[100]={};
         scanf("%s",str);
         int count_P=0;
         int count_T=0;
