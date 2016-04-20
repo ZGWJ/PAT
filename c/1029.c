@@ -1,80 +1,31 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main(){
-    char A[81]={},B[81]={},C[64]={},D[64]={};
-    scanf("%s",A);
-    scanf("%s",B);
-    
-    for (int i=0,j=0,l=0,flag1=0,flag2=0; i<81; i++) {
-        flag1=flag2=0;
-        if (A[i]!=0) {
-            for (int k=0; C[k]!='\0'; k++) {
-                if (C[k]>='A'&&C[k]<='Z') {
-                    if (C[k]==A[i]+('A'-'a')) {
-                        flag1=1;
-                        break;
-                    }
-                    
-                }
-                if (C[k]>='a'&&C[k]<='z') {
-                    if (C[k]==A[i]-('A'-'a')) {
-                        flag1=1;
-                        break;
-                    }
-                    
-                }
-                if (C[k]==A[i]) {
-                    flag1=1;
-                    break;
-                }
-            }
-            if (flag1==0) {
-                C[j]=A[i];
-                j++;
-                flag1=0;
-            }
-        }
-        if (B[i]!=0) {
-            for (int k=0; D[k]!='\0'; k++) {
-                if (D[k]==B[i]) {
-                    flag2=1;
-                    break;
-                }
-            }
-            if (flag2==0) {
-                D[l]=B[i];
-                l++;
-                flag2=0;
-            }
+
+int main()
+{
+    char a[82]={},b[82]={},c[82]={};
+    int n=0,i,j=0,k=0,flag;
+    scanf("%s %s",a,b);
+    for(i=0;i<strlen(a);i++)
+    {
+        if((a[i]==b[j])&&(j<strlen(b)))
+            j++;
+        else
+        {
+            flag = 0;
+            if(islower(a[i]))
+                a[i]=a[i]-32;
+            for(k=0;k<n;k++)
+                if(a[i]==c[k])
+                    flag=1;
+            if(flag==0)
+                c[n++]=a[i];
         }
     }
-    
-    for (int i=0,flag=0; C[i]!=0; i++) {
-        flag=0;
-        for (int j=0; D[j]!=0; j++) {
-            if (D[j]==C[i]) {
-                flag=1;
-                break;
-            }
-            if (D[j]>='a'&&D[j]<='z') {
-                if (D[j]==C[i]-('A'-'a')) {
-                    flag=1;
-                    break;
-                }
-            }
-            if (D[j]>='A'&&D[j]<='Z') {
-                if (D[j]==C[i]+('A'-'a')) {
-                    flag=1;
-                    break;
-                }
-            }
-        }
-        if (flag==0) {
-            if (C[i]>='a'&&C[i]<='z') {
-                printf("%c",C[i]+('A'-'a'));
-            }else{
-                printf("%c",C[i]);
-            }
-        }
-    }
+    for(i=0;i<n;i++)
+        printf("%c",c[i]);
+
+    return 0;
 }
