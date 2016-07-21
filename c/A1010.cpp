@@ -2,12 +2,13 @@
 #include <cstring>
 #include <math.h>
 #include <algorithm>
+#include <limits.h>
 
 typedef long long LL;
 
 using namespace std;
 
-LL INF=pow(2, 62)-1;
+LL INF=LONG_LONG_MAX;
 LL map[256];
 
 void init(){
